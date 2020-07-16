@@ -1,0 +1,57 @@
+import React, { Suspense } from 'react'
+import {
+  Redirect,
+  Route,
+  Switch
+} from 'react-router-dom'
+import { Helmet } from "react-helmet";
+
+import { CFade } from '@coreui/react'
+
+// routes config
+import routes from '../routes'
+
+const loading = (
+  <div className="pt-3 text-center">
+    <div className="sk-spinner sk-spinner-pulse"></div>
+  </div>
+)
+
+const TheContent = () => {
+  return (
+    <main className="c-main">
+      {/* <CContainer fluid> */}
+      <Suspense fallback={loading}>
+        {localStorage.getItem('user') ?
+          <Switch>
+            {routes.map((route, idx) => {
+              return route.component && (
+                <Route
+                  key={idx}
+                  path={route.path}
+                  exact={route.exact}
+                  name={route.name}
+                  render={props => (
+                    <CFade>
+                      <Helmet>
+                        <title>{route.name}</title>
+                      </Helmet>
+                      <route.component {...props} />
+                    </CFade>
+                  )} />
+              )
+            })}
+            <Redirect from="/" to="/dashboard" />
+          </Switch>
+          :
+          <Switch>
+            <Redirect from="/" to="/login" />
+          </Switch>
+        }
+      </Suspense>
+      {/* </CContainer> */}
+    </main>
+  )
+}
+
+export default React.memo(TheContent)
