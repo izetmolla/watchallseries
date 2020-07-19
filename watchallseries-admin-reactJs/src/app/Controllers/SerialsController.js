@@ -5,7 +5,9 @@ import env from "../../env"
 const SerialsController = {
     importList,
     postToDb,
-    getAllSerials
+    getAllSerials,
+
+
 }
 
 
@@ -29,7 +31,6 @@ function importList(data) {
     return fetch(env.nodeServer + "/" + data)
         .then(handleResponse)
         .then(thedata => {
-
             return thedata;
         });
 }
@@ -49,6 +50,18 @@ function postToDb(data) {
             return user;
         });
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 function handleResponse(response) {

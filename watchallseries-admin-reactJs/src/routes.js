@@ -13,6 +13,7 @@ const EditSerial = React.lazy(() => import('./views/pages/serials/editserial'));
 
 const GeneralSettings = React.lazy(() => import('./views/pages/settings/general'));
 const Importing = React.lazy(() => import('./views/pages/settings/importing'));
+const ImportEpisodes = React.lazy(() => import('./views/pages/serials/import/ImportEpisodes'));
 
 
 
@@ -26,7 +27,11 @@ const routes = [
   { path: '/serials', name: 'All Serials', exact: true, component: AllSerials },
   { path: '/serials/all', name: 'All Serials', component: AllSerials },
   { path: '/serials/addnew', name: 'Add New Serials', component: AddNewSerial },
-  { path: '/serials/import', name: 'Import Serials', component: ImportSerial },
+  { path: '/serials/import', name: 'Import Serials', exact: true, component: ImportSerial },
+
+
+  { path: '/serials/import/serie/:slug', name: 'Import Episodes', component: ImportEpisodes },
+
   { path: '/serials/edit/:id', name: 'All Serials', component: EditSerial },
 
 

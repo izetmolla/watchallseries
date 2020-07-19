@@ -17,7 +17,13 @@ class CreateEpisodesTable extends Migration
             $table->id();
             $table->string('title')->nullable();
             $table->string('season')->nullable();
-            $table->string('iop')->nullable();
+            $table->string('episode')->nullable();
+            $table->string('slug')->unique();
+            $table->string('date')->nullable();
+            $table->longText("description")->nullable();
+            $table->string('links')->nullable();
+            $table->string('import_slug')->nullable();
+            $table->string('import_website')->nullable();
             $table->timestamps();
         });
     }

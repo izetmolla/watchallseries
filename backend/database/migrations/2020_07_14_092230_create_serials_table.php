@@ -18,10 +18,11 @@ class CreateSerialsTable extends Migration
             $table->string("serialId")->nullable();
             $table->string("title")->nullable();
             $table->string("thumbnail")->nullable();
-            $table->string("release_date")->nullable();
+            $table->string("released_date")->nullable();
             $table->longText("description")->nullable();
             $table->string("slug")->unique();
-            $table->string("importURL")->nullable();
+            $table->string("import_slug")->nullable();
+            $table->string("import_website")->nullable();
             $table->string("status")->default("draft");
             $table->timestamps();
         });

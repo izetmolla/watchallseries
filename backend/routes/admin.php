@@ -33,6 +33,8 @@ Route::prefix('serials')->group(function () {
     Route::post('/getAllSerials','Api\Admin\SerialsController@getAllSerials');
 
     Route::post('/import','Api\Admin\ImportController@importList');
+    Route::post('/import/episodes/{slug}','Api\Admin\ImportController@importEpisodes');
+    Route::post('/import/links/{slug}','Api\Admin\ImportController@importList');
     
 
 });
